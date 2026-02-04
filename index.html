@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WISNOTECH - Digital Excellence</title>
+    
+    <meta name="description" content="WISNOTECH - Digital training, web development, and mobile app solutions in Nigeria. Empowering your digital future.">
+    <meta name="keywords" content="web development, mobile apps, training, uromi, edo state, tech skills">
+
+    <meta property="og:title" content="WISNOTECH - Digital Excellence">
+    <meta property="og:description" content="Transform your career with our top-tier digital skills training and services.">
+    <meta property="og:image" content="BRAND LOGO.png"> 
+    <meta property="og:url" content="https://wisnotech.com">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="BRAND LOGO.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #2563eb;       
+            --primary-dark: #1d4ed8;  
+            --accent: #f59e0b;        
+            --dark: #0f172a;          
+            --light: #f8fafc;         
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { color: #e2e8f0; background-color: #020617; overflow-x: hidden; }
+
+        /* --- PRELOADER --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #020617; z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s; }
+        .preloader-logo { width: 100px; height: auto; animation: pulse 1.5s ease-in-out infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 0.6; } }
+
+        /* --- BACKGROUND BLOBS --- */
+        .blob-cont { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; overflow: hidden; pointer-events: none; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; animation: float 10s infinite alternate; }
+        .blob-1 { top: 10%; left: 10%; width: 300px; height: 300px; background: purple; animation-duration: 20s; }
+        .blob-2 { bottom: 20%; right: 10%; width: 400px; height: 400px; background: blue; animation-duration: 25s; }
+        .blob-3 { bottom: 50%; left: 40%; width: 200px; height: 200px; background: var(--accent); animation-duration: 15s; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 50px); } }
+
+        /* --- HEADER --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); transition: all 0.3s ease; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; max-width: 1200px; margin: 0 auto; }
+        .logo-container { display: flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 50px; width: auto; border-radius: 10px; transition: transform 0.3s ease; }
+        .logo-img:hover { transform: scale(1.05); }
+        .logo-text { color: white; font-size: 1.4rem; font-weight: 800; margin-left: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #fff; font-weight: 500; font-size: 0.95rem; position: relative; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .btn-nav { padding: 10px 25px; background: linear-gradient(to right, var(--primary), var(--primary-dark)); color: white !important; border-radius: 50px; font-weight: 600; transition: transform 0.3s !important; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+        .btn-nav:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
+
+        /* --- HERO --- */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 120px 20px 50px; position: relative; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.25rem; margin-bottom: 2.5rem; color: #cbd5e1; max-width: 700px; line-height: 1.6; }
+        .txt-type > .txt { color: var(--accent); border-right: 0.1rem solid var(--accent); }
+        .btn-hero { padding: 15px 40px; font-size: 1.1rem; background: linear-gradient(to right, #f59e0b, #d97706); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; text-decoration: none; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); transition: all 0.3s ease; display: inline-block; }
+        .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6); }
+        .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
+        .stat-item h3 { font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 5px; }
+        .stat-item p { color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- SECTIONS & SLIDER --- */
+        section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; color: #fff; margin-bottom: 15px; position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--primary); margin: 15px auto 0; border-radius: 2px; }
+        .section-header p { color: #94a3b8; font-size: 1.1rem; }
+        .slider-window { overflow: hidden; width: 100%; position: relative; padding: 20px 0; }
+        .slider-track { display: flex; width: max-content; gap: 30px; animation: scroll 40s linear infinite; }
+        .slider-track:hover { animation-play-state: paused; }
+        .service-card { min-width: 320px; height: 450px; border-radius: 20px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .card-img { width: 100%; height: 100%; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .service-card:hover .card-img img { transform: scale(1.1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- TESTIMONIALS & FAQ --- */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testimonial-card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px); transition: transform 0.3s; }
+        .testimonial-card:hover { transform: translateY(-5px); background: rgba(30, 41, 59, 0.8); }
+        .stars { color: var(--accent); margin-bottom: 1rem; }
+        .quote-text { color: #cbd5e1; font-style: italic; margin-bottom: 1.5rem; line-height: 1.6; }
+        .user-profile { display: flex; align-items: center; gap: 15px; }
+        .user-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .user-info h4 { color: white; font-size: 1rem; }
+        .user-info span { color: #64748b; font-size: 0.85rem; }
+        
+        .faq-item { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px; border-radius: 10px; overflow: hidden; cursor: pointer; transition: 0.3s; }
+        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; color: white; font-weight: 600; }
+        .faq-answer { max-height: 0; overflow: hidden; padding: 0 20px; color: #94a3b8; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.active .faq-answer { max-height: 150px; padding-bottom: 20px; }
+        .faq-item.active { background: rgba(255, 255, 255, 0.1); }
+        .faq-item.active i { transform: rotate(45deg); }
+
+        /* --- PRICING --- */
+        .pricing-section { background: linear-gradient(to bottom, #020617, #0f172a); width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 6rem 0; }
+        .pricing-container { max-width: 1200px; margin: 0 auto; padding: 0 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .price-card { background: white; padding: 3rem 2rem; border-radius: 24px; text-align: center; position: relative; transition: 0.3s; }
+        .price-card.popular { transform: scale(1.05); border: 4px solid var(--primary); box-shadow: 0 0 30px rgba(37, 99, 235, 0.3); }
+        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .price { font-size: 3rem; font-weight: 800; color: var(--dark); margin: 1.5rem 0; }
+        .price span { font-size: 1rem; color: #64748b; font-weight: 500; }
+        .features-list { list-style: none; margin-bottom: 2rem; text-align: left; padding-left: 10px; }
+        .features-list li { margin-bottom: 1rem; color: #475569; display: flex; align-items: center; }
+        .features-list li i { color: var(--primary); margin-right: 12px; background: #eff6ff; padding: 5px; border-radius: 50%; font-size: 0.8rem; }
+        
+        /* Dark Title Fix for Pricing Cards */
+        .price-card h3 { color: var(--dark); font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
+
+        /* --- FORMS & CONTACT --- */
+        .form-wrapper { background: white; padding: 3rem; border-radius: 24px; max-width: 800px; margin: 0 auto; }
+        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; transition: border-color 0.3s; color: #333; }
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus { outline: none; border-color: var(--primary); }
+        
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; border-radius: 24px; overflow: hidden; background: #1e293b; }
+        .contact-info { padding: 4rem; background: linear-gradient(135deg, #0f172a, #1e293b); color: white; }
+        .contact-item { margin-bottom: 2rem; display: flex; gap: 15px; }
+        .contact-item i { font-size: 1.5rem; color: var(--accent); margin-top: 5px; }
+        .map-wrapper iframe { width: 100%; height: 100%; min-height: 500px; border: 0; }
+
+        /* --- AUTHENTIC FOOTER STYLES --- */
+        footer { background: #020617; color: #94a3b8; padding: 5rem 5% 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto 4rem; }
+        .footer-col h4 { color: white; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul li a { color: #94a3b8; text-decoration: none; transition: color 0.3s; display: block; }
+        .footer-col ul li a:hover { color: var(--primary); transform: translateX(5px); }
+        .contact-list li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+        .contact-list li i { color: var(--accent); margin-top: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+
+        /* --- UTILS --- */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center; }
+        .lightbox.active { display: flex; animation: fadeIn 0.3s ease; }
+        .lightbox-content img { max-width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 50px rgba(255,255,255,0.1); }
+        .close-btn, .nav-btn { position: absolute; color: white; font-size: 40px; cursor: pointer; z-index: 10001; transition: color 0.3s; }
+        .close-btn { top: 30px; right: 40px; }
+        .nav-btn.prev { left: 30px; } .nav-btn.next { right: 30px; }
+        
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 10000; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
+        #backToTop { display: none; position: fixed; bottom: 40px; left: 40px; z-index: 99; border: none; outline: none; background-color: var(--primary); color: white; cursor: pointer; padding: 15px; border-radius: 50%; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        #backToTop:hover { background-color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav-links { position: absolute; right: 0; top: 70px; background: #0f172a; flex-direction: column; width: 100%; padding: 2rem 0; clip-path: circle(0px at 90% -10%); transition: 0.5s; }
+            .nav-links.active { clip-path: circle(1000px at 90% -10%); }
+            .hamburger { display: block; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; margin-top: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="BRAND LOGO.png" alt="Loading..." class="preloader-logo">
+        </div>
+    </div>
+
+    <div class="blob-cont">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="#home" class="logo-container">
+                <img src="BRAND LOGO.png" alt="WISNOTECH Logo" class="logo-img">
+                <span class="logo-text">WISNOTECH</span>
+            </a>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#register" class="btn-nav">Register Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div data-aos="zoom-in" data-aos-duration="1000" style="z-index: 10;">
+            <div style="margin-bottom: 20px; display: inline-block; padding: 5px 15px; background: rgba(255,255,255,0.1); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.2);">
+                <i class="fas fa-sparkles" style="color: var(--accent); margin-right: 5px;"></i> Transform Your Digital Skills
+            </div>
+            <h1>We Are Experts In <br>
+                <span class="txt-type" data-wait="3000" data-words='["Web Development", "Mobile Apps", "Video Editing", "UI/UX Design"]'></span>
+            </h1>
+            <p>Empowering your digital future with professional skills, creative solutions, and world-class training programs.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#services" class="btn-hero">Explore Our Services</a>
+                <a href="#pricing" class="btn-hero" style="background: transparent; border: 2px solid rgba(255,255,255,0.3);">View Pricing</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>100+</h3>
+                    <p>Students Trained</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99%</h3>
+                    <p>Success Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Projects Delivered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our Services</h2>
+            <p>Comprehensive digital solutions tailored for you.</p>
+        </div>
+
+        <div class="slider-window">
+            <div class="slider-track">
+                <div class="service-card"><div class="card-img"><img src="programming.jpeg" alt="Web"></div></div>
+                <div class="service-card"><div class="card-img"><img src="mobile app developer.jpeg" alt="App"></div></div>
+                <div class="service-card"><div class="card-img"><img src="videography.jpeg" alt="Video"></div></div>
+                <div class="service-card"><div class="card-img"><img src="digital skills.jpeg" alt="Graphics"></div></div>
+                <div class="service-card"><div class="card-img"><img src="digital marketing.jpeg" alt="Marketing"></div></div>
+                <div class="service-card"><div class="card-img"><img src="content creator.jpeg" alt="Content"></div></div>
+                <div class="service-card"><div class="card-img"><img src="programming.jpeg" alt="Web"></div></div>
+                <div class="service-card"><div class="card-img"><img src="mobile app developer.jpeg" alt="App"></div></div>
+                <div class="service-card"><div class="card-img"><img src="videography.jpeg" alt="Video"></div></div>
+                <div class="service-card"><div class="card-img"><img src="digital skills.jpeg" alt="Graphics"></div></div>
+                <div class="service-card"><div class="card-img"><img src="digital marketing.jpeg" alt="Marketing"></div></div>
+                <div class="service-card"><div class="card-img"><img src="content creator.jpeg" alt="Content"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="section-header" data-aos="fade-up">
+            <h2>What Our Students Say</h2>
+            <p>Hear from successful graduates who transformed their careers.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote-text">"WISNOTECH transformed my career. I went from knowing nothing about coding to landing my first dev job in just 4 months!"</p>
+                <div class="user-profile">
+                    <div class="user-avatar">EO</div>
+                    <div class="user-info">
+                        <h4>Emeka Okonkwo</h4>
+                        <span>Web Developer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote-text">"The practical approach to learning made everything easy to understand. I now run my own design studio."</p>
+                <div class="user-profile">
+                    <div class="user-avatar">BA</div>
+                    <div class="user-info">
+                        <h4>Blessing Adeyemi</h4>
+                        <span>UI/UX Designer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote-text">"From zero to hero! The digital marketing program gave me all the tools I needed to start my own agency."</p>
+                <div class="user-profile">
+                    <div class="user-avatar">OA</div>
+                    <div class="user-info">
+                        <h4>Oluwaseun Adeleke</h4>
+                        <span>Digital Marketer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" style="background-color: #020617;">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about our training.</p>
+        </div>
+        
+        <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Do I need a laptop to start?</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, having a personal laptop is recommended for practice, but you can start with our facility's computers for the first 2 weeks.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Will I get a certificate?</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! Upon successful completion of your project and training, you will be issued a recognized WISNOTECH certificate.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Do you offer payment plans?</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we allow a 60% initial deposit with the remaining balance paid within the first month of training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="pricing-section" id="pricing">
+        <div class="pricing-container">
+            <div class="price-card" data-aos="flip-left" data-aos-delay="100">
+                <h3>UI/UX & Graphics</h3>
+                <div class="price">₦100,000 <span>/course</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Design Principles</li>
+                    <li><i class="fas fa-check"></i> Figma & Adobe XD</li>
+                    <li><i class="fas fa-check"></i> Logo & Branding</li>
+                    <li><i class="fas fa-check"></i> Extras</li>
+                </ul>
+                <a href="#register" class="btn-nav" style="width:100%; display:block; text-align:center;">Enroll Now</a>
+            </div>
+
+            <div class="price-card popular" data-aos="flip-up" data-aos-delay="200">
+                <div class="badge">MOST POPULAR</div>
+                <h3>Web Development</h3>
+                <div class="price">₦200,000 <span>/course</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> HTML5, CSS, JS</li>
+                    <li><i class="fas fa-check"></i> Github</li>
+                    <li><i class="fas fa-check"></i> Backend Basics</li>
+                    <li><i class="fas fa-check"></i> Hosting & Deployment</li>
+                </ul>
+                <a href="#register" class="btn-nav" style="width:100%; display:block; text-align:center;">Enroll Now</a>
+            </div>
+
+            <div class="price-card" data-aos="flip-right" data-aos-delay="300">
+                <h3>App Development</h3>
+                <div class="price">₦200,000 <span>/course</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Flutter </li>
+                    <li><i class="fas fa-check"></i> iOS & Android</li>
+                    <li><i class="fas fa-check"></i> API Integration</li>
+                    <li><i class="fas fa-check"></i> App testing</li>
+                </ul>
+                <a href="#register" class="btn-nav" style="width:100%; display:block; text-align:center;">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="register">
+        <div class="section-header" data-aos="fade-down">
+            <h2>Join WISNOTECH</h2>
+            <p>Register for a course or request a service today.</p>
+        </div>
+
+        <div class="form-wrapper" data-aos="zoom-in-up">
+            <form id="registerForm" onsubmit="sendToWhatsapp(event)">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="regName" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="regEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label>Interested In</label>
+                    <select id="regCourse" required>
+                        <option value="">Select a Service / Course</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Mobile App Dev">Mobile App Dev</option>
+                        <option value="Video Editing">Video Editing</option>
+                        <option value="Graphic Design">Graphic Design</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Message (Optional)</label>
+                    <textarea id="regMessage" rows="4" placeholder="Tell us more about your needs..."></textarea>
+                </div>
+                <button type="submit" class="btn-hero" style="width: 100%;">
+                    <i class="fab fa-whatsapp" style="margin-right:8px;"></i> Submit via WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact" style="padding-bottom: 0;">
+        <div class="section-header" data-aos="fade-down">
+            <h2>Visit Us</h2>
+        </div>
+        
+        <div class="contact-grid" data-aos="fade-up">
+            <div class="contact-info">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem;">Get in Touch</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Address</strong><br>
+                        <span>No. 7 Forest Guard Street, Uromi, Edo State</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        <span>contact@wisnotech.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Phone</strong><br>
+                        <span>+234 915 354 1297</span>
+                    </div>
+                </div>
+                
+                <h4 style="margin-top: 3rem; margin-bottom: 1rem;">Send Quick Feedback</h4>
+                <form id="contactForm" onsubmit="sendContactToWhatsapp(event)">
+                    <input type="text" id="contactName" placeholder="Your Name" style="width: 100%; padding: 15px; border-radius: 10px; border: none; margin-bottom: 15px; background: rgba(255,255,255,0.1); color: white;" required>
+                    <textarea id="contactMessage" style="width: 100%; padding: 15px; border-radius: 10px; border: none; margin-bottom: 15px; background: rgba(255,255,255,0.1); color: white;" rows="3" placeholder="Type your message..." required></textarea>
+                    <button class="btn-hero" style="font-size: 0.9rem; padding: 10px 25px;">
+                        <i class="fab fa-whatsapp" style="margin-right:5px;"></i> Chat on WhatsApp
+                    </button>
+                </form>
+            </div>
+            
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.539871028785!2d6.328008473827904!3d6.703763121044712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1046a1fc88a25f21%3A0x951c840ffb009ffa!2s7%20Forest%20Guard%20St%2C%20Uromi%20311115%2C%20Edo!5e0!3m2!1sen!2sng!4v1770118796545!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div style="font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 15px;">WISNOTECH</div>
+                <p style="margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6;">Transforming Ideas into Digital Reality. We empower the next generation of tech professionals with world-class skills.</p>
+                <div class="social-icons" style="margin: 0;">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#services">Web Development</a></li>
+                    <li><a href="#services">Mobile App Dev</a></li>
+                    <li><a href="#services">Video Editing</a></li>
+                    <li><a href="#services">UI/UX Design</a></li>
+                    <li><a href="#services">Digital Marketing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pricing">Pricing Plans</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="#register">Register Now</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Reach Us</h4>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>No. 7 Forest Guard Street,<br>Uromi, Edo State</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+234 915 354 1297</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@wisnotech.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 WISNOTECH. All Rights Reserved. | Made in Nigeria</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">×</span>
+        <button class="nav-btn prev" onclick="changeImage(-1)">❮</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Full View">
+        </div>
+        <button class="nav-btn next" onclick="changeImage(1)">❯</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, offset: 100, once: true });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); });
+        });
+
+        class TypeWriter {
+            constructor(txtElement, words, wait = 3000) {
+                this.txtElement = txtElement;
+                this.words = words;
+                this.txt = '';
+                this.wordIndex = 0;
+                this.wait = parseInt(wait, 10);
+                this.type();
+                this.isDeleting = false;
+            }
+            type() {
+                const current = this.wordIndex % this.words.length;
+                const fullTxt = this.words[current];
+                if(this.isDeleting) { this.txt = fullTxt.substring(0, this.txt.length - 1); } 
+                else { this.txt = fullTxt.substring(0, this.txt.length + 1); }
+                this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+                let typeSpeed = 100;
+                if(this.isDeleting) { typeSpeed /= 2; }
+                if(!this.isDeleting && this.txt === fullTxt) { typeSpeed = this.wait; this.isDeleting = true; } 
+                else if(this.isDeleting && this.txt === '') { this.isDeleting = false; this.wordIndex++; typeSpeed = 500; }
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const txtElement = document.querySelector('.txt-type');
+            if(txtElement) {
+                const words = JSON.parse(txtElement.getAttribute('data-words'));
+                const wait = txtElement.getAttribute('data-wait');
+                new TypeWriter(txtElement, words, wait);
+            }
+        });
+
+        // Preloader Logic
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => { preloader.style.visibility = 'hidden'; }, 500);
+        });
+
+        // Lightbox Logic
+        const gridImages = document.querySelectorAll('.service-card .card-img img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let currentIndex = 0;
+
+        gridImages.forEach((img, index) => {
+            img.style.cursor = "pointer"; 
+            img.addEventListener('click', () => {
+                currentIndex = index;
+                openLightbox(img.src);
+            });
+        });
+
+        function openLightbox(src) {
+            lightbox.classList.add('active');
+            lightboxImg.src = src;
+            lightboxImg.className = ''; 
+            lightboxImg.classList.add('slide-reset');
+        }
+
+        function closeLightbox() { lightbox.classList.remove('active'); }
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        function changeImage(direction) {
+            if(direction === 1) { lightboxImg.classList.add('slide-left'); } 
+            else { lightboxImg.classList.add('slide-right'); }
+            setTimeout(() => {
+                currentIndex += direction;
+                if (currentIndex >= gridImages.length) currentIndex = 0;
+                if (currentIndex < 0) currentIndex = gridImages.length - 1;
+                lightboxImg.src = gridImages[currentIndex].src;
+                lightboxImg.className = ''; 
+                void lightboxImg.offsetWidth; 
+                lightboxImg.classList.add('slide-reset');
+            }, 300);
+        }
+
+        // Utils
+        function toggleFaq(element) { element.classList.toggle('active'); }
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        // --- WHATSAPP LOGIC ---
+        function sendToWhatsapp(e) {
+            e.preventDefault();
+            var name = document.getElementById("regName").value;
+            var email = document.getElementById("regEmail").value;
+            var course = document.getElementById("regCourse").value;
+            var message = document.getElementById("regMessage").value;
+            var whatsappMessage = `*NEW REGISTRATION* %0A%0A*Name:* ${name} %0A*Email:* ${email} %0A*Course:* ${course} %0A*Note:* ${message}`;
+            var url = `https://wa.me/2349153541297?text=${whatsappMessage}`;
+            window.open(url, '_blank');
+            document.getElementById("registerForm").reset();
+        }
+
+        function sendContactToWhatsapp(e) {
+            e.preventDefault();
+            var name = document.getElementById("contactName").value;
+            var message = document.getElementById("contactMessage").value;
+            var whatsappMessage = `*NEW ENQUIRY* %0A%0A*Name:* ${name} %0A*Message:* ${message}`;
+            var url = `https://wa.me/2349153541297?text=${whatsappMessage}`;
+            window.open(url, '_blank');
+            document.getElementById("contactForm").reset();
+        }
+    </script>
+
+    <a href="https://wa.me/2349153541297" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+</body>
+</html>
